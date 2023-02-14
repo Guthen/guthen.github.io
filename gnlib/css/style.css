@@ -1,0 +1,234 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Titillium Web;
+    text-align: center;
+}
+
+header{
+    background: linear-gradient(#233341, #34495e);
+    height: 100vh;
+    color: #fff;
+}
+
+.main ul {
+    float: right;
+    list-style-type: none;
+    margin-top: 35px;
+    margin-right: 20px;
+}
+
+.main ul li {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.main ul li a{
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 30px;
+    border: 1.5px solid #fff;
+    transition: 0.6s ease;
+}
+
+.main ul li a:hover{
+    background-color: #7f8c8d;
+}
+
+.main ul li.active a{
+    background-color: #233341;
+    color: #fff;  
+}
+
+.logo img{
+    width: 250px;
+    height: auto;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate( -50%, -50% ) scale( 1 );
+    transition: 0.6s;
+    animation: alpha-show 2s;
+}
+
+.logo img:hover{
+    transform: translate( -50%, -50% ) scale( 1.1 );
+}
+
+.title{
+    position: absolute;
+    top: 1%;
+    left: 1%;
+}
+
+.title h1{
+    color: #fff;
+    font-size: 50px;
+}
+
+.button{
+    position: absolute;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn{
+    border: 5px solid #233341;
+    padding: 10px 30px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.6s ease;
+}
+
+.btn:hover{
+    background-color: #233341;
+    color: #ecf0f1;
+}
+
+.info{
+    background: #ecf0f1;
+    color: #233341;
+    padding: 3vh 0 4vh;
+}
+
+.info h1{
+    position:relative;
+    font-size: 45px;
+    top: 5%;
+}
+
+.info h3{
+    position:relative;
+    font-weight: 20;
+    font-size: 20px;
+    top: 18%
+}
+
+.info ul li {
+    font-size: 19.5px;
+}
+
+.info li a {
+    color: #34495e;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: .6s;
+}
+
+.info li a:hover {
+    color: #A0A0A0;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.install{
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 3vh 0 4vh;
+}
+
+.install h1{
+    position: relative;
+    font-size: 45px;
+    top: 5%;
+}
+
+.install h3{
+    position: relative;
+    font-weight: 20;
+    font-size: 15px;
+    top: 8%;
+}
+
+.install li a {
+    color: #ecf0f1;
+    font-weight: bold;
+    text-decoration: none;
+    transition: .6s;
+}
+
+.install li a:hover {
+    color: #7f8c8d;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.staff-avatar {
+    border-radius: 50%;
+}
+
+.staff_body{
+    margin: 0;
+    padding: 0;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #C8C8C8;
+}
+
+.staff_body .containerStaff{
+    position: relative;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.staff_body .containerStaff .cardStaff{
+    position: relative;
+    width: 230px;
+    height: 300px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 12.5px rgba(0,0,0,0.8);
+    background: #fff;
+    transform: scale(1);
+    transition: 0.6s;
+    border-radius: 4px;
+    padding-top: 10;
+}
+
+.staff_body .containerStaff .cardStaff .StaffContent{
+    position: relative;
+    text-align: center;
+    top: 10px;
+}
+
+.staff_body .containerStaff .cardStaff:hover {
+    transform: scale(1.1);
+}
+
+.staff_body .containerStaff .cardStaff .StaffContent h2{
+    color: #3B3B3B;
+}
+
+.staff_body .containerStaff .cardStaff .StaffContent h3{
+    color: #A0A0A0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2c3e50;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: #233341; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #151E27; 
+}
+
+/* ANIMATIONS */
+/* > alpha-show: Appear animation, play with opacity */
+@keyframes alpha-show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

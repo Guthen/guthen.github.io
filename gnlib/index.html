@@ -1,0 +1,93 @@
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>GNLib - Accueil</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	</head>
+	<body>
+		<header>
+			<div class="main">
+				<ul>
+					<!-- CODE IN js/button_links.js -->
+					<li v-for="( v, k ) in buttons">
+						<a :href="v">
+							{{ k }}
+						</a>
+					</li>
+				</ul>
+
+				<div class="title">
+					<h1>GNLib</h1>
+				</div>	
+			</div>
+
+			<div class="logo">
+				<a href="wiki/index.html"><center><img src="img/gnlib_logo.png"></center></a>
+			</div>
+
+
+			<div class="button">
+				<a href="wiki/index.html" class="btn">VOIR LE WIKI</a>	
+			</div>
+		</header>
+
+		<div class="info">
+			<h1>Qu'est-ce que GNLib ?</h1>
+
+			<h3>
+				GNLib est une librairie en gLua, créée par <b>Guthen</b> et <b>Nogitsu</b>.<br>Elle permet aux développeurs de faciliter le développement de leurs addons en leurs fournissant des fonctions et des VGUIs.
+			</h3>
+
+			<br>
+
+			<h1>Quelques fonctionnalités</h1>
+			<ul>
+				<li>• Inclure un addon récursivement en respectant les côtés</li>
+				<li>• Avoir des VGUIs plus épurés que ceux de base</li>
+				<li>• Une <a href="https://flatuicolors.com/palette/defo">palette de couleur</a> integrée</li>
+				<li>• Un système de traduction automatique</li>
+				<li>• Des fonctions pratiques pour du Paint</li>
+				<li>• Une extension d’auto-complétion sur <a href="https://marketplace.visualstudio.com/items?itemName=Guthen.gnlib-snippets">VSCode</a></li>
+				<li>• Et bien d'autre..</li>
+			</ul>
+		</div>
+
+		<div class="install">
+			<h1>Comment installer GNLib ?</h1>
+
+			<ul>
+				<li>• Depuis <a href="https://github.com/Nogitsu/GNLib">Github</a></li>
+				<li>• Depuis <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1845423276">Steam Workshop</a></li>
+			</ul>
+		</div>
+
+		<div class="admin-text">
+			<h1>CONTRIBUTEURS</h1>
+		</div>
+
+		<div class="staff_body">
+			<div class="containerStaff">
+				<!-- CODE IN js/list_creators.js -->
+				<div class="cardStaff" v-for="v in staff">
+					<div class="StaffContent">
+						<img class="staff-avatar" width=200 height=200 :src="v.image">
+						<h2>{{ v.name }}</h2>
+						<h3>{{ v.role }}</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- PRODUCTION LINK -->
+		<script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+		<!-- DEVELOPMENT LINK -->
+		<!-- <script src="https://unpkg.com/vue"></script> -->
+		
+		<script src="js/button_links.js"></script>
+		<script src="js/list_creators.js"></script>
+	</body>
+</html>

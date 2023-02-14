@@ -1,0 +1,110 @@
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>GNLib - Wiki</title>
+		<link rel="stylesheet" type="text/css" href="css/wiki.css">
+		<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	</head>
+	<body>
+		<header>
+			<div class="main">
+				<div class="logo">
+					<a href="../index.html"><center><img src="img/gnlib.png"></center></a> 
+				</div>
+				<input v-model="search" id="mySearch" placeholder="Rechercher..." title="Search a function, variable or VGUI">
+				<div class="vertical-menu">
+					<ul id="myMenu">
+						<!-- VGUIs -->
+						<div class="categorie"><h1>VGUI</h1></div>
+						<li v-for="text in vgui">
+							<a :href="'?file=' + links.vgui + text.toLowerCase() + '.lua?search=' + text" v-if="text.toLowerCase().includes( search.toLowerCase() )">
+								{{ text }}
+							</a>
+						</li>
+						<!-- DOCS -->
+						<div v-for="( v, k ) in docs">
+							<div class="categorie"><h1>{{ k.toUpperCase() }}</h1></div>
+							<li v-for="el in v.el">
+								<a :href="'?file=' + el.link + '?search=' + el.text" v-if="el.text.toLowerCase().includes( search.toLowerCase() )">
+									{{ el.text }}
+								</a>
+							</li>
+						</div>
+						<!-- COLOR variables -->
+						<div class="categorie"><h1>COLORS</h1></div>
+						<li v-for="el in color">
+							<!-- <a :href="'?file=' + links.color + '?search=' + el.name" v-if="el.name.toLowerCase().indexOf( search.toLowerCase() ) > -1" v-bind:style="{ backgroundColor: el.color }"> -->
+							<a href="#" v-if="el.name.toLowerCase().includes( search.toLowerCase() )">
+								{{ el.name }}
+								<span class="color-view" :style="{ backgroundColor: el.color }">&nbsp;</span>
+							</a>
+						</li>
+						<li>&nbsp;</li>
+						<li>&nbsp;</li>
+					</ul>
+				</div>
+			</div>
+			<div class="right">
+			    <h1 class="title"><center>{{ title }}</center></h1>
+			    
+			    <div class="function" v-if="usage">
+			    	<h2>
+						<span :class="side" :title="side.substring( 0, 1 ).toUpperCase() + side.substring( 1, side.length ) + ' side'">&nbsp;</span>{{ usage }}
+						<a :href="source_link">
+							<img class="icon" src="https://git-scm.com/images/logos/downloads/Git-Icon-White.png">
+						</a>
+					</h2>
+				</div>
+
+			    <div class="desc" v-if="description">
+			    	<h2>DESCRIPTION :</h2>
+					<p>{{ description }}</p>
+					<p v-if="note"><b>Note :</b> {{ note }}</p>
+					<p v-if="parent"><b>Parent :</b> {{ parent }}</p>
+				</div>
+				
+			    <div class="arg" v-if="args.length > 0">
+					<h2>{{ is_vgui ? "FUNCTIONS :" : ( args.length > 1 ? 'ARGUMENTS :' : 'ARGUMENT :' ) }}</h2>
+			    	<p v-for="arg in args">
+						• <b>{{ arg.type }}</b> <u>{{ arg.name }}</u> : {{ arg.prompt }}
+					</p>
+			    </div>
+				
+				<div class="output" v-if="output.length > 0">
+					<h2>{{ output.length > 1 ? 'SORTIES :' : 'SORTIE :' }}</h2>
+			    	<p v-for="out in output">
+						• <b>{{ out.type }}</b> <u>{{ out.name }}</u> : {{ out.prompt }}
+					</p>
+				</div>
+
+			    <div class="exp" v-if="example.prompt || example.code || example.output">
+					<h2>EXEMPLE :</h2>
+					<p v-if="example.prompt">{{ example.prompt }}</p>
+
+			    	<div class="code" v-if="example.code">
+						<pre class="prettyprint lang-lua">{{ example.code }}</pre>
+					</div>
+
+					<a :href="example.output" target="_blank" v-if="example.output.search( 'https://' ) > -1">
+						<img :src="example.output" alt="example.prompt">
+					</a>
+					<p v-else-if="example.output"><b>SORTIE :</b> {{ example.output }}</p>
+			    </div>
+			</div>
+		</header>
+
+		<!-- PRODUCTION LINK -->
+		<script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+		<!-- DEVELOPMENT LINK -->
+		<!-- <script src="https://unpkg.com/vue"></script> -->
+
+		<script src="js/wiki_nav.js"></script>
+		<script src="js/wiki_right.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
+		<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/lang-lua.js"></script>
+	</body>
+</html>

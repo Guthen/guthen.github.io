@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Créateur de doc</title>
+    </head>
+    <body style="background-color: #34495e; color: #fff;">
+        <div class="docmaker">
+            <div style="position: fixed; height: 100vh;">
+                <div v-for="( arg, arg_k ) in args">
+                    <h3>{{ arg_k.substring( 0, 1 ).toUpperCase() + arg_k.substring( 1, arg_k.length ) }}</h3>
+
+                    <div v-if="arg.value instanceof Array">
+                        <ul>
+                            <li v-for="( v, k ) in arg.value">
+                                <input v-model="v.value" :placeholder="arg_k + ' value'">
+                                <input v-if="arg.is_var" v-model="v.type" :placeholder="arg_k + ' type'">
+                                <input v-if="arg.is_var" v-model="v.desc" :placeholder="arg_k + ' desc'">
+                                <button v-on:click="arg.value.splice( k, 1 )">-</button>
+                            </li>
+                        </ul>
+                        <button v-on:click="arg.value.push( { value: '', type: '', desc: '' } )">+</button>
+                    </div>
+                    <div v-else-if="arg.hyper_text">
+                        <ul>
+                            <li><input v-model="arg.hyper_text.prompt" placeholder="prompt value"></li>
+                            <li><textarea v-model="arg.hyper_text.code" cols=100 rows=15></textarea></li>
+                            <li><input v-model="arg.hyper_text.output" placeholder="output value"></li>
+                        </ul>
+                    </div>
+                    <div v-else>
+                        <input v-model="arg.value" :placeholder="arg_k + ' value'">
+                        <input v-if="arg.is_var" v-model="arg.type" :placeholder="arg_k + ' type'">
+                        <input v-if="arg.is_var" v-model="arg.desc" :placeholder="arg_k + ' desc'">
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-left: 42%;">
+                <h3>Output</h3>
+                <pre style="background-color: #233341; color: #fff; white-space: pre-wrap;">{{ getOutput }}</pre>
+            </div>  
+        </div>
+
+        <script src="https://unpkg.com/vue"></script>
+        <script src="js/doc_maker.js"></script>
+    </body>
+</html>
